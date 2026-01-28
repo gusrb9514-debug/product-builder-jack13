@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generate-btn');
     const menuContainer = document.getElementById('menu-container');
-    const themeToggleBtn = document.getElementById('theme-toggle-btn');
     const body = document.body;
 
     const lunchMenus = [
@@ -14,37 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "쌀국수", "분짜", "팟타이", "나시고랭"
     ];
 
-    // Load theme from localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light-mode') {
-        body.classList.add('light-mode');
-        themeToggleBtn.textContent = 'Dark Mode';
-    } else {
-        themeToggleBtn.textContent = 'White Mode';
-    }
-
     if (generateBtn) {
         generateBtn.addEventListener('click', () => {
             recommendLunchMenu();
-        });
-    }
-
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            if (body.classList.contains('light-mode')) {
-                themeToggleBtn.textContent = 'Dark Mode';
-                localStorage.setItem('theme', 'light-mode');
-            } else {
-                themeToggleBtn.textContent = 'White Mode';
-                localStorage.setItem('theme', 'dark-mode');
-            }
-            // Reset Disqus to apply new theme
-            if (typeof DISQUS !== 'undefined') {
-                DISQUS.reset({
-                    reload: true
-                });
-            }
         });
     }
 
