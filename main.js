@@ -39,6 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 themeToggleBtn.textContent = 'White Mode';
                 localStorage.setItem('theme', 'dark-mode');
             }
+            // Reset Disqus to apply new theme
+            if (typeof DISQUS !== 'undefined') {
+                DISQUS.reset({
+                    reload: true
+                });
+            }
         });
     }
 
